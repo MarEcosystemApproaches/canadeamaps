@@ -1,2 +1,5 @@
 ^canadeamaps\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
+^data_raw$
+^LICENSE\.md$

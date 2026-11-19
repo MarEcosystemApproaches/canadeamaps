@@ -1,11 +1,24 @@
 Package: canadeamaps
-Title: What the Package Does (One Line, Title Case)
+Title: Relevant Maps for the Canadian Coastline
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Authors@R:
+    c(
+    person("Andrea", "Hilborn", , "andreahilborn@gmail.com", role = c("aut", "cre")),
+    person("Daniel", "Duplisea", , "daniel.duplisea@gmail.com", role = "ctb"),
+    person("Tom", "Bermingham", role = "ctb"),
+    person("Jamie", "Tam", , "jamiectam.phd@gmail.com", role = "ctb"),
+    person("R\u00e9mi", "Daigle", role = "ctb")
+    )
+Description: Provides helpers for downloading spatial layers (bioregions, MPAs,
+    EEZs, coastlines) relevant to the Canadian coastline from Canada's Open
+    Data portal.
+License: MIT + file LICENSE
 Encoding: UTF-8
+Imports:
+    httr2
+Suggests:
+    mardata,
+    sf,
+    terra
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.1.1
