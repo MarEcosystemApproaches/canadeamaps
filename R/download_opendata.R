@@ -53,8 +53,8 @@ get_COD_url <- function(uuid, ext, silent = FALSE) {
 # Downloading a file ####
 
 # Canada Bioregions shapefile
-url_bioregions = "23eb8b56-dac8-4efc-be7c-b8fa11ba62e9"
-url_get = get_COD_url(url_bioregions, ext = ".shp")
+uuid_bioregions = "23eb8b56-dac8-4efc-be7c-b8fa11ba62e9"
+url_get = get_COD_url(uuid_bioregions, ext = ".shp")
 
 # Location to save - needs update to auto-detect path on user's system
 save_dir = "./data_raw/"
