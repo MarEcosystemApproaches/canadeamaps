@@ -60,10 +60,10 @@ url_get = get_COD_url(uuid_bioregions, ext = ".shp")
 save_dir = "./data_raw/"
 zip_file = file.path(save_dir, "canada_bioregions.zip")
 unzip_dir = file.path(save_dir, "canada_bioregions")
+dir.create(unzip_dir, showWarnings = TRUE)
 
 # Download and unzip
 download.file(url_get, destfile = zip_file, mode = "wb")
-dir.create(unzip_dir, showWarnings = FALSE)
 unzip(zip_file, exdir = unzip_dir)
 
 # List the file names you just downloaded
