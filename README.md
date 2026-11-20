@@ -8,6 +8,8 @@ The goals are:
 * Reduce the number of dependendies, and use the `terra` package for any data wrangling.
     * If you prefer to use `sf`, you can transform loaded vector data using the `st_as_sf()` function
 
+This project is part of the Ecosystem Approach to Fisheries Management workshop, to support the [`marea`](https://marecosystemapproaches.github.io/marea/), [`gslea`](https://github.com/duplisea/gslea/), [`pacea`](https://github.com/pbs-assess/pacea/tree/main), `arcea`, and `nlea` R packages.
+
 Wishlist layers:
 - [ ] oceans act MPAs
 - [ ] EEZs
