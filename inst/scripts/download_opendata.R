@@ -14,7 +14,7 @@ unzip_dir = file.path(save_dir, "canada_bioregions")
 
 if (!file.exists(zip_file)) {
   url_get = get_COD_url(url_bioregions, ext = ".shp")
-  dir.create(save_dir, showWarnings = FALSE)
+  dir.create(save_dir, showWarnings = FALSE, recursive = T)
   download.file(url_get, destfile = zip_file, mode = "wb")
 } else {
   message("Zip already exists: ", zip_file, " (skipping download)")
