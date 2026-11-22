@@ -16,3 +16,11 @@ Wishlist layers:
 - [x] Bioregions
 - [ ] NAFO zones
 - [ ] Coastlines - future ability to add region-specific high resolution ones?
+
+## Examples
+
+- `get_bioregions()` will retrieve the [Federal Marine Bioregions](https://open.canada.ca/data/en/dataset/23eb8b56-dac8-4efc-be7c-b8fa11ba62e9)
+- `get_ebsas()` retrieves [Ecologically and Biologically Significant Areas](https://open.canada.ca/data/en/dataset/d2d6057f-d7c4-45d9-9fd9-0a58370577e0). Since this file is large, it might be slow to display. You can subset to one or more specific oceans with the `oceans = ` variable. For example:
+    - `get_ebsas(ocean = "Pacific")` will pull only Pacific Ocean EBSAs into your R environment.
+    - `get_ebsas(ocean = c("Arctic","Atlantic"))` will subset all EBSAs in both the Atlantic and Arctic oceans. 
+- `get_mpas()` retrieves [Ocean's Act Marine Protected Areas](https://open.canada.ca/data/en/dataset/a1e18963-25dd-4219-a33f-1a38c4971250)

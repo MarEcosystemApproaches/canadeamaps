@@ -55,25 +55,50 @@ get_bioregions <- function(region = NULL) {
   return(bioregions)
 }
 
+
+# Ecologically and Biologically Significant Areas:
+
+# From: https://open.canada.ca/data/en/dataset/d2d6057f-d7c4-45d9-9fd9-0a58370577e0
+# To do: add regional subset
+get_ebsas <- function(ocean = NULL) {
+  uuid_ebsas = "d2d6057f-d7c4-45d9-9fd9-0a58370577e0"
+  lf = download_opendata(uuid_file = uuid_ebsas, foldername = "ebsas")
+
+  # File to open:
+  idxread = grepl(pattern = ".shp$", x = lf)
+  ebsas = terra::vect(lf[idxread])
+
+  if (!is.null(ocean) && all(tolower(trimws(ocean)) %in% c("pacifique","pacific","atlantique","atlantic","arctique","arctic"))) {
+    print(paste("Area found: region specified:", ocean))
+    # Check both the EN and FR columns:
+    idx_en = which(grepl(tolower(paste(ocean, collapse = "|")), tolower(ebsas$Ocean_EN)) == TRUE)
+    idx_fr = which(grepl(tolower(paste(ocean, collapse = "|")), tolower(ebsas$Ocean_FR)) == TRUE)
+    # Grab the index appropriate for the language:
+    idx = get(names(which(lengths(list(idx_en = idx_en, idx_fr = idx_fr)) > 0)))
+    ebsas = ebsas[idx]
+    # To add something here
+  } else {
+    print("NOTE: this is a large file and may take a while to plot without cropping first")
+    print("Use the 'ocean = ' field to subset to Pacific, Atlantic, Arctic / Pacifique, Atlantique, Arctique. (There are no EBSAs in the Great Lakes)")
+
+  }
+
+  return(ebsas)
+}
+
 # Ocean's act marine protected areas:
 # From: https://open.canada.ca/data/en/dataset/a1e18963-25dd-4219-a33f-1a38c4971250
 # This function has the option "outer = TRUE", as the original download has the Zones delineated within each MPA
 # Many users will probably not need that for mapping purposes, so this option aggregates each MPA into its own polygon
 # If they want the zones they can set "outer = FALSE"
 # Maybe there is a better word than "outer" for this
-get_mpas <- function(region = NULL, outer = TRUE) {
+get_mpas <- function(outer = TRUE) {
   uuid_mpas = "a1e18963-25dd-4219-a33f-1a38c4971250"
   lf = download_opendata(uuid_file = uuid_mpas, foldername = "mpas")
 
   # File to open:
   idxread = grepl(pattern = ".shp$", x = lf)
   mpas = terra::vect(lf[idxread])
-
-  # If a region is specified, extract and crop for that region
-  if (!is.null(region) && (tolower(trimws(region)) %in% c("pacifique","pacific","atlantique","atlantic","arctique","arctic"))) {
-    print(paste("Area found: region specified:", region))
-    # To add something here
-  }
 
   if (!isFALSE(outer)) {
     print("outer set to TRUE, aggregating zones into individual MPA polygons")
