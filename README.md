@@ -10,12 +10,20 @@ The goals are:
 
 This project is part of the Ecosystem Approach to Fisheries Management workshop, to support the [`marea`](https://marecosystemapproaches.github.io/marea/), [`gslea`](https://github.com/duplisea/gslea/), [`pacea`](https://github.com/pbs-assess/pacea/tree/main), `arcea`, and `nlea` R packages.
 
-Wishlist layers:
+<details >
+<summary>
+
+#### Wishlist layers (click to expand):
+   
+</summary>
+
 - [x] oceans act MPAs
 - [ ] EEZs
 - [x] Bioregions
 - [ ] NAFO zones
 - [ ] Coastlines - future ability to add region-specific high resolution ones?
+
+</details>
 
 ## Examples
 
