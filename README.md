@@ -32,3 +32,10 @@ This project is part of the Ecosystem Approach to Fisheries Management workshop,
     - `get_ebsas(ocean = "Pacific")` will pull only Pacific Ocean EBSAs into your R environment.
     - `get_ebsas(ocean = c("Arctic","Atlantic"))` will subset all EBSAs in both the Atlantic and Arctic oceans. 
 - `get_mpas()` retrieves [Ocean's Act Marine Protected Areas](https://open.canada.ca/data/en/dataset/a1e18963-25dd-4219-a33f-1a38c4971250)
+    - By default, this loads just the outer boundaries of each MPA into your session, as the original file download has MPA subzones as separate polygons.
+    - To keep the file in its original form and load the Zones, use `get_mpas(outer = FALSE)`.
+
+## How to install
+
+- `pak::pak("MarEcosystemApproaches/canadeamaps")`
+- `remotes::install_github("MarEcosystemApproaches/canadeamaps")`
