@@ -104,7 +104,7 @@ get_mpas <- function(outer = TRUE) {
 
   if (!isFALSE(outer)) {
     print("outer set to TRUE, aggregating zones into individual MPA polygons")
-    mpas = aggregate(mpas, by = "NAME_E", dissolve = T)
+    mpas = terra::aggregate(mpas, by = "NAME_E", dissolve = T)
     # Rename auto-generated count column:
     names(mpas)[names(mpas) == "agg_n"] <- "NUM_ZONES_COMBINED"
     mpas$mean_KM2 <- NULL # Removing as this is wrong now - could sum for each
