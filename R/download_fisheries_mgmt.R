@@ -3,12 +3,27 @@
 #' @description
 #' Retrieve the Northwest Atlantic Fisheries Organization (NAFO) shapefile from OpenData and load into your R session.
 #'
+#' The shapefile includes 5 layer types: one point layer, two line layers, and two polygon layers. This function loads the polygon layer of the entire regions as the default.
+#'
+#' This function re-projects the downloaded files so that they can be easily stacked with the others in this package.
 #'
 #' @source [https://open.canada.ca/data/en/dataset/59af1c96-fc8f-4fa0-b398-d65e953eadaa](https://open.canada.ca/data/en/dataset/59af1c96-fc8f-4fa0-b398-d65e953eadaa)
 #' @export
-#' @return Spatvector of Bioregions
+#' @param type A character indicating file type to load:
+#'   * `"polygons"` (the default): NAFO areas as individual polygons.
+#'   * `"lines"`: NAFO areas as lines, including edges (looks identical to the `"polygons"`, but is separate line segments)
+#'   * `"points"`: points of the vertices of the NAFO areas.
+#'   * `"lines_noedges"`: Lines of internal boundaries, but no external edges
+#'   * `"polygons_landclip"`: NAFO polygons over ocean, with area overlapping land clipped out.
+#' @return Spatvector of NAFO points, lines or polygons
 #' @examples
-#' bioregions = get_bioregions()
+#' nafo_points = get_nafo(type = "points")
+#' nafo_lines = get_nafo(type = "lines")
+#' nafo_polygons = get_nafo(type = "polygons")
+#' # Polygons with land masses removed:
+#' nafo_noland = get_nafo(type = "polygons_landclip")
+#' # Line layer with just the internal boundaries:
+#' nafo_lines_noedges = get_nafo(type = "lines_noedges")
 #'
 get_nafo <- function(type = "polygons") {
   uuid_bioregions = "59af1c96-fc8f-4fa0-b398-d65e953eadaa"
