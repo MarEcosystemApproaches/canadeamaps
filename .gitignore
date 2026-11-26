@@ -58,3 +58,4 @@ src/*.dll
 # Raw data
 data-raw/
 data_raw/
+docs

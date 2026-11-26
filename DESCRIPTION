@@ -22,3 +22,4 @@ Suggests:
     terra
 Roxygen: list(markdown = TRUE)
 Config/roxygen2/version: 8.1.1
+URL: https://marecosystemapproaches.github.io/canadeamaps/
