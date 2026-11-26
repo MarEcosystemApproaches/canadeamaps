@@ -3,9 +3,8 @@
 
 The goals are:
 
-* Make it easy to download commonly used spatial layers relevant to DFO. For example, the EEZ, national Bioregions, and other files that are currently provided Canada-wide on Federal data platforms
-* Also serve as another way to download these files to your computer in their original format (e.g. .shp, .csv, etc).
-* Reduce the number of dependendies, and use the `terra` package for any data wrangling.
+* Make it easy to download commonly used spatial layers relevant to DFO in their original format (e.g. .shp, .csv, etc. For example, the EEZ, national Bioregions, and other files that are currently provided Canada-wide on Federal data platforms.
+* Reduce the number of dependendies, and use the `terra` package for spatial data wrangling.
     * If you prefer to use `sf`, you can transform loaded vector data using the `st_as_sf()` function
 
 This project is part of the Ecosystem Approach to Fisheries Management workshop, to support the [`marea`](https://marecosystemapproaches.github.io/marea/), [`gslea`](https://github.com/duplisea/gslea/), [`pacea`](https://github.com/pbs-assess/pacea/tree/main), `arcea`, and `nlea` R packages.
@@ -20,7 +19,7 @@ This project is part of the Ecosystem Approach to Fisheries Management workshop,
 - [x] oceans act MPAs
 - [ ] EEZs
 - [x] Bioregions
-- [ ] NAFO zones
+- [x] NAFO areas
 - [ ] Coastlines - future ability to add region-specific high resolution ones?
 
 </details>
@@ -34,6 +33,12 @@ This project is part of the Ecosystem Approach to Fisheries Management workshop,
 - `get_mpas()` retrieves [Ocean's Act Marine Protected Areas](https://open.canada.ca/data/en/dataset/a1e18963-25dd-4219-a33f-1a38c4971250)
     - By default, this loads just the outer boundaries of each MPA into your session, as the original file download has MPA subzones as separate polygons.
     - To keep the file in its original form and load the Zones, use `get_mpas(outer = FALSE)`.
+ - `get_nafo()` retrieves [NAFO Subareas, Divisions, and Subdivisions](https://open.canada.ca/data/en/dataset/59af1c96-fc8f-4fa0-b398-d65e953eadaa). You can specify whether you want to load the downloaded point, lines, or polygons layers with the `type = ` option:
+    - `"polygons"` (the default): NAFO areas as individual polygons.
+    -  `"lines"`: NAFO areas as lines, including edges (looks identical to the `"polygons"`, but is separate line segments)
+    -  `"points"`: points of the vertices of the NAFO areas.
+    -  `"lines_noedges"`: Lines of internal boundaries, but no external edges
+    -  `"polygons_landclip"`: NAFO polygons over ocean, with area overlapping land clipped out.
 
 ## How to install
 
